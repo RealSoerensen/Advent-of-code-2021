@@ -1,5 +1,7 @@
-with open("nums.txt", "r") as f:
-    nums = f.readlines()
+file = open("day_2/input.txt", "r")
+
+def main(file):
+    nums = file.readlines()
     depth = 0
     horizontal = 0
     for num in nums:
@@ -12,5 +14,8 @@ with open("nums.txt", "r") as f:
         elif num[0] == "forward":
             horizontal += int(num[1])
 
-    print(str(depth*horizontal))
+    return depth*horizontal
+
+if __name__ == "__main__":
+    print(main(file))
         

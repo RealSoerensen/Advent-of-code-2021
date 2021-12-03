@@ -1,5 +1,7 @@
-with open("nums.txt", "r") as f:
-    nums = f.readlines()
+file = open("day_2/input.txt", "r")
+
+def main(file):
+    nums = file.readlines()
     depth = 0
     horizontal = 0
     aim = 0
@@ -14,4 +16,7 @@ with open("nums.txt", "r") as f:
             horizontal += int(num[1])
             depth = int(num[1])*aim+depth
         
-    print(str(horizontal*depth))
+    return horizontal*depth
+
+if __name__ == "__main__":
+    print(main(file))
