@@ -1,7 +1,24 @@
-from typing import List
 from collections import Counter
 
-file = open("day_3/input.txt").read()
+file = open("day_3/input.txt")
+nums = file.readlines()
+
+
+def part_1(nums):
+    maxlen = len(max(nums, key=len))
+    counters = [Counter() for _ in range(maxlen)]
+    for num in nums:
+        for i, v in enumerate(num):
+            counters[i].update(v)
+    gamma, epsilon = "", ""
+    for c in counters:
+        if c["0"] > c["1"]:
+            gamma = gamma + "0"
+            epsilon = epsilon + "1"
+        else:
+            gamma = gamma + "1"
+            epsilon = epsilon + "0"
+    return int(gamma, 2) * int(epsilon, 2)
 
 def find_bit_criteria(nums: list, i: int, is_co2: bool):
     counter = Counter()
@@ -18,8 +35,7 @@ def eliminate_nums(nums: list, i: int, criteria: str) -> list:
     return [n for n in nums if n[i] == criteria]
 
 
-def main(file):
-    nums = file.readlines()
+def part_2(nums):
     maxlen = len(max(nums, key=len))
     res = 1
     for is_co2 in [False, True]:
@@ -32,5 +48,7 @@ def main(file):
         res = res * int(new_list[0], 2)
     return res
 
+
 if __name__ == "__main__":
-    print(main(file))
+    print(part_1(nums))
+    print(part_2(nums))
