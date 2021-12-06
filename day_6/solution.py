@@ -1,7 +1,5 @@
-import time
-start_time = time.perf_counter ()
-
 file = "day_6/input.txt"
+input = list(open(file).readlines())[0]
 
 def make_age_map(lanternfish):
 	fish_age = {key: 0 for key in range(0, 9)}
@@ -11,7 +9,7 @@ def make_age_map(lanternfish):
 
 def calculate_population(fish_list, days):
 	fish_age = make_age_map(fish_list)
-	for day in range(0, days):
+	for _ in range(0, days):
 		new_fish = fish_age[0]
 		fish_age = {key - 1: value for (key, value) in fish_age.items() if key > 0}
 		fish_age[6] += new_fish
@@ -27,9 +25,6 @@ def part_two(data):
 
 
 if __name__ == "__main__":
-    input = list(open(file).readlines())
     data = [int(age) for age in input.split(',')]
     print(part_one(data))
     print(part_two(data))
-    end_time = time.perf_counter ()
-    print(end_time - start_time, "seconds")
