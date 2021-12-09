@@ -1,9 +1,5 @@
 from collections import Counter
 
-file = open("day_3/input.txt")
-nums = file.readlines()
-
-
 def part_1(nums):
     maxlen = len(max(nums, key=len))
     counters = [Counter() for _ in range(maxlen)]
@@ -50,5 +46,7 @@ def part_2(nums):
 
 
 if __name__ == "__main__":
+    with open("day_3/input.txt") as f:
+        nums = f.read().splitlines()
     print(part_1(nums))
     print(part_2(nums))

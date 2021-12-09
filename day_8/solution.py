@@ -32,10 +32,9 @@ def part_two(file):
 
 
 if __name__ == '__main__':
-    teststr = ""
     lmap = lambda *a: list(map(*a))
     with open('day_8/input.txt') as f:
-        s = (f.read() if teststr == "" else teststr).splitlines()
+        s = f.read().splitlines()
         file = lmap(lambda r: lmap(lambda i: i.split(" "), r.split(" | ")), s)
     
     print(part_one(file))

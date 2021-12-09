@@ -1,5 +1,3 @@
-file = "day_5/input.txt"
-
 def parse(input):
     for start, stop in [line.split(" -> ") for line in input.splitlines()]:
         x, y = map(int, start.split(','))
@@ -62,5 +60,6 @@ def part_two(file):
         return overlap_count
 
 if __name__ == "__main__":
+    file = "day_5/input.txt"
     print(part_one(file))
     print(part_two(file))

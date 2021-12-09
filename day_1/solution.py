@@ -1,6 +1,3 @@
-file = open("day_1/input.txt", "r")
-nums = file.read().splitlines()
-
 def part_1(nums):
     start_num = nums[0]
     increased = 0
@@ -25,5 +22,8 @@ def part_2(nums):
     return increased
 
 if __name__ == "__main__":
+    with open("day_1/input.txt", "r") as f:
+        nums = f.read().splitlines()
+
     print(part_1(nums))
     print(part_2(nums))

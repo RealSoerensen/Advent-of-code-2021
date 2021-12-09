@@ -1,6 +1,3 @@
-file = open("day_2/input.txt", "r")
-nums = file.readlines()
-
 def part_1(nums):
     depth = 0
     horizontal = 0
@@ -33,6 +30,8 @@ def part_2(nums):
     return depth*horizontal
 
 if __name__ == "__main__":
+    with open("day_2/input.txt", "r") as f:
+        nums = f.read().splitlines()
     print(part_1(nums))
     print(part_2(nums))
         

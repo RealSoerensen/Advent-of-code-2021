@@ -1,6 +1,3 @@
-file = "day_6/input.txt"
-input = list(open(file).readlines())[0]
-
 def make_age_map(lanternfish):
 	fish_age = {key: 0 for key in range(0, 9)}
 	for age in lanternfish:
@@ -25,6 +22,8 @@ def part_two(data):
 
 
 if __name__ == "__main__":
-    data = [int(age) for age in input.split(',')]
-    print(part_one(data))
-    print(part_two(data))
+	with open("day_6/input.txt") as f:
+		input = list(f)[0]
+		data = [int(age) for age in input.split(',')]
+		print(part_one(data))
+		print(part_two(data))

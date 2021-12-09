@@ -1,6 +1,3 @@
-from typing import List
-file = open("day_4/input.txt").read()
-
 class BingoBoard:
     def __init__(self, input_string):
         self.is_bingo = False
@@ -26,26 +23,14 @@ class BingoBoard:
     def get_sum(self):
         return sum([sum(self.rows[i]) for i in range(5)])
 
-def parse(file: str):
-    boards = []
-    parts = file.split("\n\n")
-    nums = list(map(int, parts[0].split(",")))
-    board_input = parts[1::]
-    for bi in board_input:
-        boards.append(BingoBoard(bi))
-    return boards, nums
-
-def part_1(file: str) -> int:
-    boards, nums = parse(file)
-
+def part_1(boards, nums):
     for num in nums:
         for board in boards:
             is_bingo = board.play(num)
             if is_bingo:
                 return num * board.get_sum()
 
-def part_2(file: str) -> int:
-    boards, nums = parse(file)
+def part_2(boards, nums):
     last_winner = None
     for num in nums:
         for board in boards:
@@ -57,5 +42,13 @@ def part_2(file: str) -> int:
     return last_winner
 
 if __name__ == "__main__":
-    print(part_1(file))
-    print(part_2(file))
+    with open("day_4/input.txt") as f:
+        boards = []
+        parts = f.read().split("\n\n")
+        nums = list(map(int, parts[0].split(",")))
+        board_input = parts[1::]
+        for bi in board_input:
+            boards.append(BingoBoard(bi))
+
+    print(part_1(boards, nums))
+    print(part_2(boards, nums))
