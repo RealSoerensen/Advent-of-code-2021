@@ -1,16 +1,21 @@
 def make_age_map(lanternfish):
 	fish_age = {key: 0 for key in range(0, 9)}
+	# add 1 to the age of each fish
 	for age in lanternfish:
 		fish_age[age] += 1
 	return fish_age
 
 def calculate_population(fish_list, days):
+	# make a map of the age of each fish
 	fish_age = make_age_map(fish_list)
+	# loop through the days
 	for _ in range(0, days):
 		new_fish = fish_age[0]
 		fish_age = {key - 1: value for (key, value) in fish_age.items() if key > 0}
 		fish_age[6] += new_fish
 		fish_age[8] = new_fish
+	
+	# return the total population
 	return sum(fish_age.values())
 
 def part_one(data):
@@ -25,5 +30,5 @@ if __name__ == "__main__":
 	with open("day_6/input.txt") as f:
 		input = list(f)[0]
 		data = [int(age) for age in input.split(',')]
-		print(part_one(data))
-		print(part_two(data))
+	print(part_one(data))
+	print(part_two(data))

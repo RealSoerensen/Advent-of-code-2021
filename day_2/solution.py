@@ -1,9 +1,12 @@
 def part_1(nums):
+    # Set starting position
     depth = 0
     horizontal = 0
+    # Iterate through instructions
     for num in nums:
         num = num.strip()
         num = num.split(" ")
+        # If the instruction is up, down or forward. Move accordingly
         if num[0] == "up":
             depth -= int(num[1])
         elif num[0] == "down":
@@ -11,22 +14,28 @@ def part_1(nums):
         elif num[0] == "forward":
             horizontal += int(num[1])
 
+    # Return depth times horizontal
     return depth*horizontal
 
 def part_2(nums):
+    # Set starting position
     depth = 0
     horizontal = 0
     aim = 0
+    # Iterate through instructions
     for num in nums:
         num = num.strip()
         num = num.split(" ")
+        # If the instruction is up or down move the aim accordingly
         if num[0] == "up":
             aim -= int(num[1])
         elif num[0] == "down":
             aim += int(num[1])
+        # If the instruction is forward, add the aim to the depth and times that with the horizontal
         elif num[0] == "forward":
             horizontal += int(num[1])
             depth = int(num[1])*aim+depth
+            
     return depth*horizontal
 
 if __name__ == "__main__":
